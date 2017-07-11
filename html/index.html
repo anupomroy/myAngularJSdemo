@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CD Store</title>	
+	<meta name="viewport" content="width=device-width, initial-scale=2" />
+	<script src="../libs/angular.js"></script>
+	<!-- <script src="../scripts/app.js"></script> -->
+	<script src="../scripts/module.js"></script>
+	<script src="../scripts/controller.js"></script>
+	<script src="../scripts/factory.js"></script>
+	<link rel="stylesheet" href="../libs/bootstrap-3.3.7-dist/css/bootstrap.css"/>
+	<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body ng-app="CDApp">
+	<div class="container-fluid">
+		<h3 class="col-lg-12">CD Store</h3>
+	</div>
+	<div ng-controller="CDController" class="container-fluid">
+		<div ng-repeat="cd in CDList" class="col-lg-12">
+			<div class="col-lg-3">
+				<img src="../images/movies/{{cd.img}}"  title="{{cd.img}}"  style="width:100%"/>
+			</div>
+			<div class="col-lg-9">
+				<h4 >{{cd.name | uppercase}}</h4>
+				<div class="starRating">
+					<span>
+						<span>{{cd.rating}}</span>
+						<span class="icon star-icon gold"></span>
+					</span>
+				</div>
+				<div>Directed by <b>{{cd.director}}</b> | Produced by <b>{{cd.producer}}</b></div>
+				<div>Price: &#8377{{cd.price | number : 2}}</div>
+				<div ng-if="cd.available" class="col-lg-6 p0 childM10">
+					<div class="col-lg-6 inlineChild p0">
+						<label>Quantity: </label>
+						<input class="form-control" type="number" min="1" max="{{cd.available}}" value="1" style="width: 70px;"/>
+					</div>
+					<div class="col-lg-6 p0">
+						<button class="btn btn-primary col-lg-12 wFull">Add To Cart</button>
+					</div>
+				</div>
+				<br>
+				<div class="col-lg-12 p0">
+					<ul class="nav nav-tabs nav-justified">
+					  <li role="presentation" ng-class="{'active':cd.tabs==='description'}" ng-click="updateTab('description',cd)"><a>Description</a></li>
+					  <li role="presentation" ng-class="{'active':cd.tabs==='specification'}" ng-click="updateTab('specification',cd)"><a>Specification</a></li>
+					  <li role="presentation" ng-class="{'active':cd.tabs==='reviews'}" ng-click="updateTab('reviews',cd)"><a>Reviews</a></li>
+					</ul>
+					<div ng-if="cd.tabs==='description'" class="tabcontainer">
+						<div>{{cd.shortdescription}}</div>
+					</div>
+					<div ng-if="cd.tabs==='specification'" class="tabcontainer">
+						<div class="table col-1-2">
+							<div class="row">
+								<div class="cell"><b>Duration : </b></div>
+								<div class="cell">{{cd.synopsis.runtime}}</div>
+							</div>
+							<div class="row">
+								<div class="cell"><b>Released On : </b></div>
+								<div class="cell">{{cd.synopsis.releasedate}}</div>
+							</div>
+						</div>
+					</div>
+					<div ng-if="cd.tabs==='reviews'" class="tabcontainer">
+						<h5>Your Rating : </h5>
+						<a class="icon star-open-icon grey" ng-click = "rate(1)"></a>
+						<a class="icon star-open-icon grey" ng-click = "rate(1)"></a>
+						<a class="icon star-open-icon grey" ng-click = "rate(1)"></a>
+						<a class="icon star-open-icon grey" ng-click = "rate(1)"></a>
+						<a class="icon star-open-icon grey" ng-click = "rate(1)"></a>
+					</div>
+				</div>
+			</div>
+			<hr class="col-lg-12">
+		</div>
+	</div>
+<body>
+</html>

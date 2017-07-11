@@ -1,0 +1,73 @@
+.inlineChild > *{
+	display: inline;
+}
+hr {
+    border-color: #ccc;
+}
+.wFull{
+	width:100%;
+}
+.m0{
+	margin: 0;
+}
+.p0{
+	padding: 0;
+}
+.childM10 > *{
+	margin: 10px 0;
+}
+a{
+	cursor: pointer;
+}
+a:hover{
+	text-decoration: none;
+}
+.tabcontainer {
+	border: 1px solid #eee;
+    margin-top: -1px;
+    padding: 10px;
+}
+.table{
+	display: table;
+}
+.row{
+	display: table-row;
+}
+.cell{
+	display: table-cell;
+	padding: 5px 0;
+}
+.col-1-2 {
+    width: 50%;
+}
+.gold{
+	color: gold;
+}
+.grey{
+	color: #aaa;
+}
+a.grey:hover{
+	color: gold;
+}
+.icon{
+	width:20px;
+	height:20px;
+	font-size: 20px;
+}
+.star-icon::after{
+	content: "\2605";
+}
+.star-open-icon::after{
+	content: "\2606";
+}
+.starRating {
+    line-height: 50px;
+}
+.starRating > span {
+	font-weight: bold;
+    background: #33cc99;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    text-shadow: 2px 2px gray;
+}
